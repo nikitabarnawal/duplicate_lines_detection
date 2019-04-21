@@ -1,1 +1,2 @@
 Django~=2.0.6
+jellyfish==0.7.1
