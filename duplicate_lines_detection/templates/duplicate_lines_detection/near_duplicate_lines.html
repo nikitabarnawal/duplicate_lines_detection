@@ -1,0 +1,50 @@
+<DOCTYPE html>
+    <html>
+
+    <head>
+        <style>
+        #tbl_container {
+            margin-top: 5em;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        #tbl_container {}
+        </style>
+    </head>
+
+    <body>
+        <div align="center" id="tbl_container">
+            <table>
+                <tr>
+                    <th>Line no</th>
+                    <th>Content</th>
+                    <th>Duplicate Line</th>
+                </tr>
+                {% for row in duplicates %}
+                <tr>
+                    <td>{{row.line_number}}</td>
+                    <td>{{row.content}}</td>
+                    <td>{{row.duplicate_line_numbers}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <br><br>
+        <form align="center" id="back" action="{% url 'home' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" name="back" value="Back">
+        </form>
+    </body>
+
+    </html>

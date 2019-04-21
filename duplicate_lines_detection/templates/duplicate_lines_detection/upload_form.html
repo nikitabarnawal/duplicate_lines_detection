@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Duplicate Lines Detector</title>
+    <style>
+        #myForm{
+			text-align:center;
+		}
+        #error{
+            text-align:center;
+        }
+	</style>
+	</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    {% load staticfiles %}
+    <script src="{% static "duplicate_lines_detection/validation.js" %} "></script>
+</head>
+
+<body>
+    <div id="container">
+        <h3 align="center">Web Application to detect near duplicate lines</h3>
+        <form id="myForm" action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Choose any file:
+            <input type="file" name="myfile"><br><br>
+            <input type="submit" name="submit">
+        </form>
+        {% if error %}
+        <p id="error">{{error}}</p>
+        {% endif %}
+    </div>
+</body>
